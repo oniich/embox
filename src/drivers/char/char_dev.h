@@ -10,6 +10,7 @@
 #define DEVICE_H_
 
 #include <fs/idesc.h>
+#include <fs/file_operation>
 #include <drivers/device.h>
 #include <util/array.h>
 

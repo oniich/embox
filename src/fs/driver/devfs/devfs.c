@@ -48,9 +48,23 @@ static struct fsop_desc devfs_fsop = {
 	.mount = devfs_mount,
 };
 
+static struct idesc * devfs_open(struct node *node,
+								 struct file_desc *file_desc, int flags)
+{
+	return &(file_desc->idesc);
+}
+
+static struct file_operations devfs_fops = {
+	.open = devfs_open
+	// .close = NULL,
+	// .read = NULL,
+	// .write = NULL,
+	// .ioctl = NULL
+};
+
 static const struct fs_driver devfs_driver = {
 	.name = "devfs",
-	.file_op = NULL,
+	.file_op = &devfs_fops,
 	.fsop = &devfs_fsop
 };
 
